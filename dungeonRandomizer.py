@@ -49,7 +49,7 @@ for i in range(5000): #loop a bunch of times
         xpos += xdir
         
     if yRoll == 1:
-        ydir*=-1
+        ydir*= -1
         ypos += ydir
     else:
         ypos += ydir
