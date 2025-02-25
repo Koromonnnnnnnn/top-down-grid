@@ -6,8 +6,8 @@ pygame.display.set_caption("random walk")#sets the window title
 screen = pygame.display.set_mode((800, 800))#creates game screen
 xpos = 400 #start point for x
 ypos = 400 #start point for y
-xdir = 20
-ydir = 20
+xdir = 100
+ydir = 100
 
 playerImage = pygame.image.load("1.png")
 playerImage = pygame.transform.scale(playerImage, (150, 150))
@@ -38,26 +38,26 @@ map = [
 
 #render section---------------------------------------------
     
-for i in range(10000): #loop a bunch of times
-    xRoll = random.randrange(1, 100) #change x direction if you generate a 1 
-    yRoll = random.randrange(1, 100) #change y direction if you generate a 1  
+dir = [1, 2, 3, 4]
 
-    if xRoll == 1:
-        xdir *= -1
+# Render section---------------------------------------------
+
+for i in range(10000): 
+    direction = random.choice(dir) 
+
+    if direction == 1:
+        ypos -= ydir
+    elif direction == 2:
         xpos += xdir
-    else:
-        xpos += xdir
-        
-    if yRoll == 1:
-        ydir*= -1
+    elif direction == 3:
         ypos += ydir
-    else:
-        ypos += ydir
-        
-    #start back in the middle if you go off the screen
-    if xpos > 800 or xpos <0:
+    elif direction == 4: 
+        xpos -= xdir
+
+    # Start back in the middle if you go off the screen
+    if xpos > 800 or xpos < 0:
         xpos = 400
-    if ypos > 800 or ypos< 0:
+    if ypos > 800 or ypos < 0:
         ypos = 400
 
 
